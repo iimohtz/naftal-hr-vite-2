@@ -19,7 +19,7 @@ function KpiStrip() {
   const attRate = Math.round((active / total) * 1000) / 10
   const pendGP  = gatePasses.filter(g => g.status === 'PENDING').length
   const pendReq = requests.filter(r => r.status === 'PENDING').length
-
+console.log("test")
   return (
     <div className={styles.kpiStrip}>
       {[
