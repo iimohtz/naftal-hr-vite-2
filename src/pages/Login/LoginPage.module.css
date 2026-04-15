@@ -10,6 +10,7 @@
 .bgLeft {
   position: absolute;
   inset: 0;
+<<<<<<< HEAD
   background: radial-gradient(circle at 10% 20%, #031536 0%, #000c1e 100%);
   z-index: 0;
 }
@@ -44,11 +45,17 @@
   animation-direction: alternate-reverse;
 }
 
+=======
+  background: linear-gradient(145deg, #dde9f7 0%, #eef4fb 55%, #d5e4f4 100%);
+  z-index: 0;
+}
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .bgRight {
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
+<<<<<<< HEAD
   width: 45%;
   z-index: 1;
   overflow: hidden;
@@ -138,14 +145,83 @@
   100% {
     transform: perspective(1000px) rotateX(45deg) scale(1.5) translateY(50px);
   }
+=======
+  width: 42%;
+  z-index: 1;
+  overflow: hidden;
+}
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 48px,
+      rgba(140, 170, 200, 0.14) 48px,
+      rgba(140, 170, 200, 0.14) 49px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 48px,
+      rgba(140, 170, 200, 0.14) 48px,
+      rgba(140, 170, 200, 0.14) 49px
+    );
+}
+.bgPanel1 {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  right: -2%;
+  height: 45%;
+  background: linear-gradient(
+    135deg,
+    rgba(190, 210, 230, 0.55),
+    rgba(170, 195, 220, 0.25)
+  );
+  border-radius: 8px;
+  border: 1px solid rgba(160, 190, 215, 0.35);
+}
+.bgPanel2 {
+  position: absolute;
+  top: 38%;
+  left: 18%;
+  right: -4%;
+  height: 38%;
+  background: linear-gradient(
+    135deg,
+    rgba(175, 200, 222, 0.45),
+    rgba(155, 185, 210, 0.2)
+  );
+  border-radius: 6px;
+  border: 1px solid rgba(150, 180, 205, 0.25);
+}
+.bgPanel3 {
+  position: absolute;
+  bottom: 8%;
+  left: 8%;
+  width: 60%;
+  height: 22%;
+  background: linear-gradient(
+    135deg,
+    rgba(195, 215, 235, 0.4),
+    rgba(175, 200, 225, 0.15)
+  );
+  border-radius: 5px;
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 }
 
 .card {
   position: relative;
   z-index: 10;
+<<<<<<< HEAD
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--border);
+=======
+  background: #fff;
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
   border-radius: 10px;
   padding: 44px 48px 36px;
   width: 100%;
@@ -162,26 +238,40 @@
   gap: 14px;
   margin-bottom: 12px;
 }
+<<<<<<< HEAD
 
 .logoMark {
   width: 42px;
   height: 42px;
   background: transparent;
+=======
+.logoMark {
+  width: 42px;
+  height: 42px;
+  background: var(--orange-dark);
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+<<<<<<< HEAD
   overflow: hidden;
 }
 
+=======
+}
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .logoDivider {
   width: 1px;
   height: 34px;
   background: var(--orange-dark);
   opacity: 0.5;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .logoText {
   font-family: var(--font-display);
   font-weight: 800;
@@ -189,6 +279,7 @@
   letter-spacing: 0.05em;
   line-height: 1;
 }
+<<<<<<< HEAD
 
 .logoNaftal {
   color: var(--brand-yellow);
@@ -198,6 +289,14 @@
   color: var(--text);
 }
 
+=======
+.logoNaftal {
+  color: var(--orange-dark);
+}
+.logoSync {
+  color: var(--navy);
+}
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .logoDash {
   width: 72px;
   height: 3px;
@@ -214,7 +313,10 @@
   text-align: center;
   margin-bottom: 4px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .cardSub {
   font-family: var(--font-display);
   font-weight: 600;
@@ -250,7 +352,10 @@
   flex-direction: column;
   gap: 6px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .fieldLabel {
   display: flex;
   align-items: center;
@@ -268,7 +373,11 @@
   border: 1.5px solid var(--border);
   border-radius: var(--radius-md);
   font-size: 14px;
+<<<<<<< HEAD
   background: var(--bg);
+=======
+  background: #f4f7fb;
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
   color: var(--text);
   transition:
     border-color var(--t-fast),
@@ -278,6 +387,7 @@
   outline: none;
   width: 100%;
 }
+<<<<<<< HEAD
 
 .input:focus {
   border-color: var(--orange);
@@ -285,11 +395,21 @@
   box-shadow: 0 0 0 3px var(--orange-ghost);
 }
 
+=======
+.input:focus {
+  border-color: var(--orange);
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--orange-ghost);
+}
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .input:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .input::placeholder {
   font-size: 13px;
   letter-spacing: 0.06em;
@@ -305,7 +425,10 @@
   cursor: pointer;
   user-select: none;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .checkbox {
   width: 16px;
   height: 16px;
@@ -333,6 +456,7 @@
   margin-top: 4px;
   width: 100%;
 }
+<<<<<<< HEAD
 
 .submitBtn:hover:not(:disabled) {
   background: #a03306;
@@ -342,6 +466,14 @@
   transform: scale(0.98);
 }
 
+=======
+.submitBtn:hover:not(:disabled) {
+  background: #a03306;
+}
+.submitBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .submitBtn:disabled {
   opacity: 0.65;
   cursor: not-allowed;
@@ -365,7 +497,10 @@
   align-items: center;
   gap: 8px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .demoLabel {
   font-family: var(--font-display);
   font-weight: 700;
@@ -374,13 +509,19 @@
   color: var(--text-light);
   text-transform: uppercase;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .demoAccounts {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .demoBtn {
   font-size: 12px;
   color: var(--orange);
@@ -390,6 +531,7 @@
   transition: background var(--t-fast);
   cursor: pointer;
 }
+<<<<<<< HEAD
 
 .demoBtn:hover {
   background: var(--orange-ghost);
@@ -399,6 +541,14 @@
   color: var(--text-light);
 }
 
+=======
+.demoBtn:hover {
+  background: var(--orange-ghost);
+}
+.demoDot {
+  color: var(--text-light);
+}
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 .inputWrapper {
   position: relative;
   display: flex;
@@ -426,4 +576,8 @@
 
 .eyeButton:hover {
   opacity: 0.9;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485

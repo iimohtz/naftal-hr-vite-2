@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { createContext, useContext, useState, useCallback, useEffect } from "react";
+=======
+import { createContext, useContext, useState, useCallback } from "react";
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 
 /* ─────────────────────────────────────────────────────────────
    ADMIN ACCESS LIST
@@ -489,6 +493,7 @@ const AppContext = createContext(null);
 
 function mapList(list) {
   return list.map(p => ({
+<<<<<<< HEAD
     id: String(p.id),
     name: `${p.first_name ?? ''} ${p.last_name ?? ''}`.trim(),
     dept: p.unit_name || 'N/A',
@@ -501,11 +506,26 @@ function mapList(list) {
     shift: '—',
     overtime: 0, present: 0, total: 22, efficiency: 0,
     unit_type: p.unit_type || '',
+=======
+    id:       String(p.id),
+    name:     `${p.first_name ?? ''} ${p.last_name ?? ''}`.trim(),
+    dept:     p.unit_name  || 'N/A',
+    role:     p.position   || 'N/A',
+    email:    p.email      || '',
+    phone:    p.phone_ip   || '',
+    status:   p.is_active  ? 'ACTIVE' : 'INACTIVE',
+    joinDate: p.contract_start_date?.slice(0, 10) || '',
+    location: p.unit_name  || '—',
+    shift:    '—',
+    overtime: 0, present: 0, total: 22, efficiency: 0,
+    unit_type:   p.unit_type   || '',
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
     director_id: p.director_id || null,
   }))
 }
 
 export function AppProvider({ children }) {
+<<<<<<< HEAD
   // Theme state
   const [theme, setTheme] = useState(() => {
     try {
@@ -528,6 +548,8 @@ export function AppProvider({ children }) {
     }, 500);
   }, []);
 
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
   // Rehydrate from localStorage on first load
   const [currentUser, setCurrentUser] = useState(() => {
     try {
@@ -562,6 +584,7 @@ export function AppProvider({ children }) {
 
   /* ── Auth ── */
   const login = useCallback((personOrId, password) => {
+<<<<<<< HEAD
     // Real API path
     if (typeof personOrId === 'object' && personOrId !== null) {
       const unit = JSON.parse(localStorage.getItem('unit') || 'null')
@@ -578,6 +601,24 @@ export function AppProvider({ children }) {
 
       return true
     }
+=======
+  // Real API path
+  if (typeof personOrId === 'object' && personOrId !== null) {
+    const unit = JSON.parse(localStorage.getItem('unit') || 'null')
+    const normalized = normalizeUser(personOrId, unit)
+    setCurrentUser(normalized)
+    localStorage.setItem('user', JSON.stringify(personOrId))
+
+    // ── Refresh employees from the new user's list ──
+    try {
+      const list = JSON.parse(localStorage.getItem('list') || 'null')
+      if (list && list.length > 0) setEmployees(mapList(list))
+      else setEmployees(SEED_EMPLOYEES)
+    } catch { setEmployees(SEED_EMPLOYEES) }
+
+    return true
+  }
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
 
     // ── Demo path: called with (id string, password string)
     const DEMO_USERS = {
@@ -721,8 +762,11 @@ export function AppProvider({ children }) {
   }, []);
 
   const value = {
+<<<<<<< HEAD
     theme,
     toggleTheme,
+=======
+>>>>>>> 4452c08dad15d4548caf41db13ca149d440dc485
     currentUser,
     login,
     logout,
