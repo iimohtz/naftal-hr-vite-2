@@ -776,7 +776,7 @@ function QuickActionPanel() {
             />
           </div>
         </FormField>
-        <FormField label="Time (optional)">
+        <FormField label="Time">
           <div className={styles.dateRow}>
             <Input
               type="time"
@@ -808,7 +808,7 @@ function QuickActionPanel() {
             </span>
           )}
         </FormField>
-        <FormField label="Destination (optional)">
+        <FormField label="Destination ">
           <Input
             type="text"
             value={destination}
