@@ -606,6 +606,9 @@ function QuickActionPanel() {
       addToast("End time must be after start time.", "error");
       return;
     }
+    if (type === 'Time Off Activity' && !destination.trim()) {
+    addToast('Destination is required for a Gate Pass.', 'error'); return
+  }
     setSending(true);
     const token = localStorage.getItem("token");
 
