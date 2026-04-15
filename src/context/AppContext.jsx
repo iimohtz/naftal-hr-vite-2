@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, useEffect } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 
 /* ─────────────────────────────────────────────────────────────
    ADMIN ACCESS LIST
@@ -489,45 +489,23 @@ const AppContext = createContext(null);
 
 function mapList(list) {
   return list.map(p => ({
-    id: String(p.id),
-    name: `${p.first_name ?? ''} ${p.last_name ?? ''}`.trim(),
-    dept: p.unit_name || 'N/A',
-    role: p.position || 'N/A',
-    email: p.email || '',
-    phone: p.phone_ip || '',
-    status: p.is_active ? 'ACTIVE' : 'INACTIVE',
+    id:       String(p.id),
+    name:     `${p.first_name ?? ''} ${p.last_name ?? ''}`.trim(),
+    dept:     p.unit_name  || 'N/A',
+    role:     p.position   || 'N/A',
+    email:    p.email      || '',
+    phone:    p.phone_ip   || '',
+    status:   p.is_active  ? 'ACTIVE' : 'INACTIVE',
     joinDate: p.contract_start_date?.slice(0, 10) || '',
-    location: p.unit_name || '—',
-    shift: '—',
+    location: p.unit_name  || '—',
+    shift:    '—',
     overtime: 0, present: 0, total: 22, efficiency: 0,
-    unit_type: p.unit_type || '',
+    unit_type:   p.unit_type   || '',
     director_id: p.director_id || null,
   }))
 }
 
 export function AppProvider({ children }) {
-  // Theme state
-  const [theme, setTheme] = useState(() => {
-    try {
-      return localStorage.getItem("theme") || "light";
-    } catch {
-      return "light";
-    }
-  });
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = useCallback(() => {
-    document.body.classList.add("theme-transitioning");
-    setTheme((t) => (t === "light" ? "dark" : "light"));
-    setTimeout(() => {
-      document.body.classList.remove("theme-transitioning");
-    }, 500);
-  }, []);
-
   // Rehydrate from localStorage on first load
   const [currentUser, setCurrentUser] = useState(() => {
     try {
@@ -562,22 +540,22 @@ export function AppProvider({ children }) {
 
   /* ── Auth ── */
   const login = useCallback((personOrId, password) => {
-    // Real API path
-    if (typeof personOrId === 'object' && personOrId !== null) {
-      const unit = JSON.parse(localStorage.getItem('unit') || 'null')
-      const normalized = normalizeUser(personOrId, unit)
-      setCurrentUser(normalized)
-      localStorage.setItem('user', JSON.stringify(personOrId))
+  // Real API path
+  if (typeof personOrId === 'object' && personOrId !== null) {
+    const unit = JSON.parse(localStorage.getItem('unit') || 'null')
+    const normalized = normalizeUser(personOrId, unit)
+    setCurrentUser(normalized)
+    localStorage.setItem('user', JSON.stringify(personOrId))
 
-      // ── Refresh employees from the new user's list ──
-      try {
-        const list = JSON.parse(localStorage.getItem('list') || 'null')
-        if (list && list.length > 0) setEmployees(mapList(list))
-        else setEmployees(SEED_EMPLOYEES)
-      } catch { setEmployees(SEED_EMPLOYEES) }
+    // ── Refresh employees from the new user's list ──
+    try {
+      const list = JSON.parse(localStorage.getItem('list') || 'null')
+      if (list && list.length > 0) setEmployees(mapList(list))
+      else setEmployees(SEED_EMPLOYEES)
+    } catch { setEmployees(SEED_EMPLOYEES) }
 
-      return true
-    }
+    return true
+  }
 
     // ── Demo path: called with (id string, password string)
     const DEMO_USERS = {
@@ -721,8 +699,6 @@ export function AppProvider({ children }) {
   }, []);
 
   const value = {
-    theme,
-    toggleTheme,
     currentUser,
     login,
     logout,

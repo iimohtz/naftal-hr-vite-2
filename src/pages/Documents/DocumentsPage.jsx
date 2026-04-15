@@ -582,10 +582,15 @@ function QuickActionPanel() {
   const [sending, setSending] = useState(false);
 
   const REASON_OPTIONS = {
-    "Annual Leave": ["Paid Leave", "Exceptional Leave", "Compensatory Leave", "Unpaid Leave"],
-    "Medical Leave": [],
-    "Gate Pass": ["Personal", "Work"],
-    "Activité Relax": ["Mission", "Training"],
+    Vacation: [
+      "Paid Leave",
+      "Exceptional Leave",
+      "Compensatory Leave",
+      "Unpaid Leave",
+    ],
+    "Absence Authorization": [],
+    "Exit Pass": ["Personal", "Work"],
+    "Time Off Activity": ["Mission", "Training"],
   };
 
   const handleTypeChange = (e) => {
@@ -598,14 +603,53 @@ function QuickActionPanel() {
       addToast("Please select a request type.", "error");
       return;
     }
+
+    // 2. Reason Category Validation (Mandatory if options exist)
+    const availableOptions = REASON_OPTIONS[type] || [];
+    if (availableOptions.length > 0 && !reasonType) {
+      addToast(`Please select a specific category for ${type}.`, "error");
+      return;
+    }
+
+    // 3. Time Validation: Required for Exit Pass or Time Off Activity
+    const isTimeRequired = ["Exit Pass", "Time Off Activity"].includes(type);
+    if (isTimeRequired) {
+      if (!timeFrom || !timeTo) {
+        addToast(`Start and end times are required for ${type}.`, "error");
+        return;
+      }
+      if (timeTo <= timeFrom) {
+        addToast("The end time must be later than the start time.", "error");
+        return;
+      }
+    }
+    if (type !== "Exit Pass" && !dateFrom) {
+      addToast("Start date is required.", "error");
+      return;
+    }
+    // date_to: required unless Absence Authorization or Exit Pass
+    const isDateToRequired = !["Absence Authorization", "Exit Pass"].includes(
+      type,
+    );
+    if (isDateToRequired && !dateTo) {
+      addToast("End date is required.", "error");
+      return;
+    }
     if (dateFrom && dateTo && new Date(dateTo) < new Date(dateFrom)) {
       addToast("End date cannot be before start date.", "error");
       return;
     }
-    if (timeFrom && timeTo && timeTo <= timeFrom) {
-      addToast("End time must be after start time.", "error");
+
+    // 5. Destination Validation: required_unless Absence Authorization or Time Off Activity
+    const isDestExcluded = [
+      "Absence Authorization",
+      "Time Off Activity",
+    ].includes(type);
+    if (!isDestExcluded && !destination.trim()) {
+      addToast("Destination is required for this request.", "error");
       return;
     }
+
     setSending(true);
     const token = localStorage.getItem("token");
 
@@ -643,9 +687,9 @@ function QuickActionPanel() {
       const days =
         dateFrom && dateTo
           ? Math.max(
-            1,
-            Math.ceil((new Date(dateTo) - new Date(dateFrom)) / 86400000),
-          )
+              1,
+              Math.ceil((new Date(dateTo) - new Date(dateFrom)) / 86400000),
+            )
           : 1;
       addRequest({
         id,
@@ -687,6 +731,7 @@ function QuickActionPanel() {
       addToast(`${type} submitted successfully.`);
     } catch (err) {
       addToast(`Submitted locally. Sync failed: ${err.message}`, "warning");
+      console.log(err.message)
     }
 
     setType("");
@@ -711,10 +756,10 @@ function QuickActionPanel() {
         <FormField label="Request Type">
           <Select value={type} onChange={handleTypeChange}>
             <option value="">SELECT REQUEST TYPE…</option>
-            <option>Annual Leave</option>
-            <option>Medical Leave</option>
-            <option>Gate Pass</option>
-            <option>Activité Relax</option>
+            <option>Vacation</option>
+            <option>Absence Authorization</option>
+            <option>Exit Pass</option>
+            <option>Time Off Activity</option>
           </Select>
         </FormField>
         <FormField label="Duration / Period">
@@ -731,7 +776,7 @@ function QuickActionPanel() {
             />
           </div>
         </FormField>
-        <FormField label="Time (optional)">
+        <FormField label="Time">
           <div className={styles.dateRow}>
             <Input
               type="time"
@@ -763,7 +808,7 @@ function QuickActionPanel() {
             </span>
           )}
         </FormField>
-        <FormField label="Destination (optional)">
+        <FormField label="Destination ">
           <Input
             type="text"
             value={destination}

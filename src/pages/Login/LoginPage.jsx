@@ -49,9 +49,9 @@ export default function LoginPage() {
        * them on every page load without another API call.
        */
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.person));
-      localStorage.setItem("unit", JSON.stringify(data.unit ?? null));
-      localStorage.setItem("list", JSON.stringify(data.persons_list ?? []));
+      localStorage.setItem("user",  JSON.stringify(data.person));
+      localStorage.setItem("unit",  JSON.stringify(data.unit ?? null));
+      localStorage.setItem("list",  JSON.stringify(data.persons_list ?? []));
 
       // login() in AppContext reads 'unit' from localStorage, normalizes,
       // sets currentUser with full_name, admin flag, unit_name, etc.
@@ -68,8 +68,8 @@ export default function LoginPage() {
   };
 
   const fillDemo = (type) => {
-    if (type === "admin") { setId("NFT-2024-00892"); setPassword("admin123"); }
-    if (type === "manager") { setId("NF-4829"); setPassword("shift123"); }
+    if (type === "admin")   { setId("NFT-2024-00892"); setPassword("admin123"); }
+    if (type === "manager") { setId("NF-4829");         setPassword("shift123"); }
   };
 
   return (
@@ -86,7 +86,12 @@ export default function LoginPage() {
         {/* Logo */}
         <div className={styles.logoRow}>
           <div className={styles.logoMark}>
-            <img src="/naftal-logo-png_seeklogo-287188.webp" alt="Naftal Logo" style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '4px' }} />
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="1"  y="1"  width="8" height="8" rx="1.5" fill="white" opacity="0.9" />
+              <rect x="11" y="1"  width="8" height="8" rx="1.5" fill="white" opacity="0.6" />
+              <rect x="1"  y="11" width="8" height="8" rx="1.5" fill="white" opacity="0.6" />
+              <rect x="11" y="11" width="8" height="8" rx="1.5" fill="white" opacity="0.3" />
+            </svg>
           </div>
           <div className={styles.logoDivider} />
           <div className={styles.logoText}>
