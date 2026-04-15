@@ -582,10 +582,10 @@ function QuickActionPanel() {
   const [sending, setSending] = useState(false);
 
   const REASON_OPTIONS = {
-    "Annual Leave": ["Paid Leave", "Exceptional Leave", "Compensatory Leave", "Unpaid Leave"],
-    "Medical Leave": [],
-    "Gate Pass": ["Personal", "Work"],
-    "Activité Relax": ["Mission", "Training"],
+    "Vacation": ["Paid Leave", "Exceptional Leave", "Compensatory Leave", "Unpaid Leave"],
+    "Absence Authorization": [],
+    "Exit Pass": ["Personal", "Work"],
+    "Time Off Activity": ["Mission", "Training"],
   };
 
   const handleTypeChange = (e) => {
@@ -711,10 +711,10 @@ function QuickActionPanel() {
         <FormField label="Request Type">
           <Select value={type} onChange={handleTypeChange}>
             <option value="">SELECT REQUEST TYPE…</option>
-            <option>Annual Leave</option>
-            <option>Medical Leave</option>
-            <option>Gate Pass</option>
-            <option>Activité Relax</option>
+            <option>Vacation</option>
+            <option>Absence Authorization</option>
+            <option>Exit Pass</option>
+            <option>Time Off Activity</option>
           </Select>
         </FormField>
         <FormField label="Duration / Period">
