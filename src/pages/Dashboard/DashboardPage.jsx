@@ -7,27 +7,26 @@ import EmployeeProfileDrawer from '../../components/EmployeeProfileDrawer/Employ
 import styles from './DashboardPage.module.css'
 
 /* ── Icons ─────────────────────────────────────────────────── */
-const DownloadIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M3 16h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-const PrintIcon    = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="7" width="12" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><path d="M7 7V4h6v3M7 13h6M7 16h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-const LogIcon      = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 4h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.5"/><path d="M7 9h6M7 12h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-const ExportIcon   = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 10l3-3 3 3M10 7v8M4 16h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+const DownloadIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4M3 16h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+const PrintIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="4" y="7" width="12" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.5" /><path d="M7 7V4h6v3M7 13h6M7 16h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+const LogIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 4h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.5" /><path d="M7 9h6M7 12h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+const ExportIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 10l3-3 3 3M10 7v8M4 16h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 
 /* ── KPI Strip ─────────────────────────────────────────────── */
 function KpiStrip() {
   const { employees, requests, gatePasses } = useApp()
-  const total   = employees.length
-  const active  = employees.filter(e => e.status === 'ACTIVE').length
+  const total = employees.length
+  const active = employees.filter(e => e.status === 'ACTIVE').length
   const attRate = Math.round((active / total) * 1000) / 10
-  const pendGP  = gatePasses.filter(g => g.status === 'PENDING').length
+  const pendGP = gatePasses.filter(g => g.status === 'PENDING').length
   const pendReq = requests.filter(r => r.status === 'PENDING').length
-
   return (
     <div className={styles.kpiStrip}>
       {[
-        { label: 'ACTIVE SHIFTS',   value: total.toLocaleString(), accent: 'var(--orange)', border: 'var(--orange)' },
-        { label: 'ATTENDANCE RATE', value: `${attRate}%`,          accent: 'var(--green)',  border: 'var(--green)'  },
-        { label: 'PENDING PASSES',  value: pendGP,                 accent: 'var(--text)',   border: '#64748B'        },
-        { label: 'LEAVE REQUESTS',  value: pendReq < 10 ? `0${pendReq}` : pendReq, accent: 'var(--red)', border: 'var(--red)' },
+        { label: 'ACTIVE SHIFTS', value: total.toLocaleString(), accent: 'var(--orange)', border: 'var(--orange)' },
+        { label: 'ATTENDANCE RATE', value: `${attRate}%`, accent: 'var(--green)', border: 'var(--green)' },
+        { label: 'PENDING PASSES', value: pendGP, accent: 'var(--text)', border: '#64748B' },
+        { label: 'LEAVE REQUESTS', value: pendReq < 10 ? `0${pendReq}` : pendReq, accent: 'var(--red)', border: 'var(--red)' },
       ].map((k, i) => (
         <div key={i} className={styles.kpiCard} style={{ borderTopColor: k.border }}>
           <span className={styles.kpiLabel}>{k.label}</span>
@@ -62,7 +61,7 @@ function MyEmployees({ onViewEmployee }) {
           </div>
           <StatusBadge status={emp.status} />
           <button className={styles.viewBtn} onClick={() => onViewEmployee(emp)} title="View employee profile">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="8" rx="7" ry="4.5" stroke="currentColor" strokeWidth="1.4"/><circle cx="8" cy="8" r="2" stroke="currentColor" strokeWidth="1.4"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="8" rx="7" ry="4.5" stroke="currentColor" strokeWidth="1.4" /><circle cx="8" cy="8" r="2" stroke="currentColor" strokeWidth="1.4" /></svg>
           </button>
         </div>
       ))}
@@ -75,9 +74,9 @@ function DocHubQuick() {
   const navigate = useNavigate()
   const docs = [
     { icon: <DownloadIcon />, label: 'PAYROLL', tab: 'payroll' },
-    { icon: <PrintIcon />,    label: 'PASSES',  tab: 'passes'  },
-    { icon: <LogIcon />,      label: 'LOGS',    tab: 'logs'    },
-    { icon: <ExportIcon />,   label: 'EXPORT',  tab: 'export'  },
+    { icon: <PrintIcon />, label: 'PASSES', tab: 'passes' },
+    { icon: <LogIcon />, label: 'LOGS', tab: 'logs' },
+    { icon: <ExportIcon />, label: 'EXPORT', tab: 'export' },
   ]
   return (
     <div className={styles.section}>
@@ -107,7 +106,7 @@ function GatePassesPanel() {
       </div>
       <table className={styles.miniTable}>
         <thead>
-          <tr>{['REFERENCE','EMPLOYEE','DESTINATION','WINDOW','STATUS'].map(h => <th key={h} className={styles.th}>{h}</th>)}</tr>
+          <tr>{['REFERENCE', 'EMPLOYEE', 'DESTINATION', 'WINDOW', 'STATUS'].map(h => <th key={h} className={styles.th}>{h}</th>)}</tr>
         </thead>
         <tbody>
           {gatePasses.slice(0, 4).map(gp => (
@@ -159,7 +158,7 @@ function DemandsChart({ onSliceClick }) {
               ))}
             </Pie>
             <RechartsTooltip />
-            <Legend verticalAlign="bottom" height={24}/>
+            <Legend verticalAlign="bottom" height={24} />
           </PieChart>
         </ResponsiveContainer>
       </div>
@@ -195,7 +194,7 @@ function RequestsPanel({ selectedType, onClearFilter }) {
       )}
       <table className={styles.miniTable}>
         <thead>
-          <tr>{['ID','EMPLOYEE','ATT. %','TYPE','DAYS','ACTIONS'].map(h => <th key={h} className={styles.th}>{h}</th>)}</tr>
+          <tr>{['ID', 'EMPLOYEE', 'ATT. %', 'TYPE', 'DAYS', 'ACTIONS'].map(h => <th key={h} className={styles.th}>{h}</th>)}</tr>
         </thead>
         <tbody>
           {list.length === 0
@@ -213,7 +212,7 @@ function RequestsPanel({ selectedType, onClearFilter }) {
                   {req.status === 'PENDING' ? (
                     <div className={styles.actionBtns}>
                       <button className={styles.approveBtn} onClick={() => updateRequestStatus(req.id, 'APPROVED')}>APPROVE</button>
-                      <button className={styles.reviewBtn}  onClick={() => updateRequestStatus(req.id, 'REJECTED')}>REJECT</button>
+                      <button className={styles.reviewBtn} onClick={() => updateRequestStatus(req.id, 'REJECTED')}>REJECT</button>
                     </div>
                   ) : (
                     <StatusBadge status={req.status} />
@@ -240,10 +239,10 @@ function RequestsPanel({ selectedType, onClearFilter }) {
           </button>
         </div>
       </div>
-      
+
       {/* Pending Table */}
       {renderTable(selectedType ? pendingList : pendingList.slice(0, 3), false)}
-      
+
       {/* History Table rendered conditionally underneath but natively independent */}
       {showHistory && renderTable(historyList, true)}
     </div>
@@ -260,7 +259,7 @@ function GatePassesManager() {
       </div>
       <table className={styles.miniTable}>
         <thead>
-          <tr>{['REFERENCE','TIME','WINDOW','STATUS'].map(h => <th key={h} className={styles.th}>{h}</th>)}</tr>
+          <tr>{['REFERENCE', 'TIME', 'WINDOW', 'STATUS'].map(h => <th key={h} className={styles.th}>{h}</th>)}</tr>
         </thead>
         <tbody>
           {gatePasses.slice(0, 5).map(gp => (
@@ -294,8 +293,8 @@ export default function DashboardPage() {
           <DocHubQuick />
         </div>
         <div className={styles.col}>
-          {isAdmin  && <GatePassesPanel />}
-          {isAdmin  && <RequestsPanel selectedType={selectedDemandType} onClearFilter={() => setSelectedDemandType(null)} />}
+          {isAdmin && <GatePassesPanel />}
+          {isAdmin && <RequestsPanel selectedType={selectedDemandType} onClearFilter={() => setSelectedDemandType(null)} />}
           {!isAdmin && <GatePassesManager />}
         </div>
       </div>

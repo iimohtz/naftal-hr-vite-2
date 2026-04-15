@@ -643,9 +643,9 @@ function QuickActionPanel() {
       const days =
         dateFrom && dateTo
           ? Math.max(
-              1,
-              Math.ceil((new Date(dateTo) - new Date(dateFrom)) / 86400000),
-            )
+            1,
+            Math.ceil((new Date(dateTo) - new Date(dateFrom)) / 86400000),
+          )
           : 1;
       addRequest({
         id,

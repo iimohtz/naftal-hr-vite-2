@@ -15,7 +15,8 @@
 }
 
 /* Glowing Orbs */
-.bgLeft::before, .bgLeft::after {
+.bgLeft::before,
+.bgLeft::after {
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -23,6 +24,7 @@
   z-index: 0;
   animation: floatOrb 18s ease-in-out infinite alternate;
 }
+
 .bgLeft::before {
   top: 10%;
   left: 20%;
@@ -30,12 +32,14 @@
   height: 400px;
   background: rgba(0, 102, 255, 0.2);
 }
+
 .bgLeft::after {
   bottom: -10%;
   right: 10%;
   width: 500px;
   height: 500px;
-  background: rgba(255, 204, 0, 0.15); /* Naftal yellow glow */
+  background: rgba(255, 204, 0, 0.15);
+  /* Naftal yellow glow */
   animation-duration: 22s;
   animation-direction: alternate-reverse;
 }
@@ -75,7 +79,7 @@
   background: linear-gradient(135deg, rgba(0, 60, 113, 0.7), rgba(0, 30, 60, 0.4));
   border-radius: 12px;
   border: 1px solid rgba(255, 204, 0, 0.3);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   transform: rotate(-8deg);
   animation: float 10s ease-in-out infinite;
   backdrop-filter: blur(8px);
@@ -90,7 +94,7 @@
   background: linear-gradient(135deg, rgba(255, 204, 0, 0.8), rgba(200, 150, 0, 0.5));
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   transform: rotate(12deg);
   animation: float 14s ease-in-out infinite reverse;
   backdrop-filter: blur(8px);
@@ -101,17 +105,39 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(var(--angle, 0deg)); }
-  50% { transform: translateY(-20px) rotate(calc(var(--angle, 0deg) + 2deg)); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--angle, 0deg));
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(calc(var(--angle, 0deg) + 2deg));
+  }
 }
+
 @keyframes floatOrb {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(20px, -40px) scale(1.1); }
-  100% { transform: translate(-20px, 20px) scale(0.9); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(20px, -40px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
 }
+
 @keyframes gridMove {
-  0% { transform: perspective(1000px) rotateX(45deg) scale(1.5) translateY(0); }
-  100% { transform: perspective(1000px) rotateX(45deg) scale(1.5) translateY(50px); }
+  0% {
+    transform: perspective(1000px) rotateX(45deg) scale(1.5) translateY(0);
+  }
+
+  100% {
+    transform: perspective(1000px) rotateX(45deg) scale(1.5) translateY(50px);
+  }
 }
 
 .card {
@@ -136,6 +162,7 @@
   gap: 14px;
   margin-bottom: 12px;
 }
+
 .logoMark {
   width: 42px;
   height: 42px;
@@ -147,12 +174,14 @@
   flex-shrink: 0;
   overflow: hidden;
 }
+
 .logoDivider {
   width: 1px;
   height: 34px;
   background: var(--orange-dark);
   opacity: 0.5;
 }
+
 .logoText {
   font-family: var(--font-display);
   font-weight: 800;
@@ -160,12 +189,15 @@
   letter-spacing: 0.05em;
   line-height: 1;
 }
+
 .logoNaftal {
   color: var(--brand-yellow);
 }
+
 .logoSync {
   color: var(--text);
 }
+
 .logoDash {
   width: 72px;
   height: 3px;
@@ -182,6 +214,7 @@
   text-align: center;
   margin-bottom: 4px;
 }
+
 .cardSub {
   font-family: var(--font-display);
   font-weight: 600;
@@ -217,6 +250,7 @@
   flex-direction: column;
   gap: 6px;
 }
+
 .fieldLabel {
   display: flex;
   align-items: center;
@@ -244,15 +278,18 @@
   outline: none;
   width: 100%;
 }
+
 .input:focus {
   border-color: var(--orange);
   background: var(--card);
   box-shadow: 0 0 0 3px var(--orange-ghost);
 }
+
 .input:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
 .input::placeholder {
   font-size: 13px;
   letter-spacing: 0.06em;
@@ -268,6 +305,7 @@
   cursor: pointer;
   user-select: none;
 }
+
 .checkbox {
   width: 16px;
   height: 16px;
@@ -295,12 +333,15 @@
   margin-top: 4px;
   width: 100%;
 }
+
 .submitBtn:hover:not(:disabled) {
   background: #a03306;
 }
+
 .submitBtn:active:not(:disabled) {
   transform: scale(0.98);
 }
+
 .submitBtn:disabled {
   opacity: 0.65;
   cursor: not-allowed;
@@ -324,6 +365,7 @@
   align-items: center;
   gap: 8px;
 }
+
 .demoLabel {
   font-family: var(--font-display);
   font-weight: 700;
@@ -332,11 +374,13 @@
   color: var(--text-light);
   text-transform: uppercase;
 }
+
 .demoAccounts {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .demoBtn {
   font-size: 12px;
   color: var(--orange);
@@ -346,12 +390,15 @@
   transition: background var(--t-fast);
   cursor: pointer;
 }
+
 .demoBtn:hover {
   background: var(--orange-ghost);
 }
+
 .demoDot {
   color: var(--text-light);
 }
+
 .inputWrapper {
   position: relative;
   display: flex;

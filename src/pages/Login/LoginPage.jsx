@@ -49,9 +49,9 @@ export default function LoginPage() {
        * them on every page load without another API call.
        */
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user",  JSON.stringify(data.person));
-      localStorage.setItem("unit",  JSON.stringify(data.unit ?? null));
-      localStorage.setItem("list",  JSON.stringify(data.persons_list ?? []));
+      localStorage.setItem("user", JSON.stringify(data.person));
+      localStorage.setItem("unit", JSON.stringify(data.unit ?? null));
+      localStorage.setItem("list", JSON.stringify(data.persons_list ?? []));
 
       // login() in AppContext reads 'unit' from localStorage, normalizes,
       // sets currentUser with full_name, admin flag, unit_name, etc.
@@ -68,8 +68,8 @@ export default function LoginPage() {
   };
 
   const fillDemo = (type) => {
-    if (type === "admin")   { setId("NFT-2024-00892"); setPassword("admin123"); }
-    if (type === "manager") { setId("NF-4829");         setPassword("shift123"); }
+    if (type === "admin") { setId("NFT-2024-00892"); setPassword("admin123"); }
+    if (type === "manager") { setId("NF-4829"); setPassword("shift123"); }
   };
 
   return (
