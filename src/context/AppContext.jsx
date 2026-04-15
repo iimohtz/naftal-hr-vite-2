@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from "react";
+import { createContext, useContext, useState, useCallback, useEffect } from "react";
 
 /* ─────────────────────────────────────────────────────────────
    ADMIN ACCESS LIST
@@ -506,6 +506,28 @@ function mapList(list) {
 }
 
 export function AppProvider({ children }) {
+  // Theme state
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem("theme") || "light";
+    } catch {
+      return "light";
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    document.body.classList.add("theme-transitioning");
+    setTheme((t) => (t === "light" ? "dark" : "light"));
+    setTimeout(() => {
+      document.body.classList.remove("theme-transitioning");
+    }, 500);
+  }, []);
+
   // Rehydrate from localStorage on first load
   const [currentUser, setCurrentUser] = useState(() => {
     try {
@@ -699,6 +721,8 @@ export function AppProvider({ children }) {
   }, []);
 
   const value = {
+    theme,
+    toggleTheme,
     currentUser,
     login,
     logout,

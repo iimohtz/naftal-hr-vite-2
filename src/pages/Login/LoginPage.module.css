@@ -117,7 +117,9 @@
 .card {
   position: relative;
   z-index: 10;
-  background: #fff;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 44px 48px 36px;
   width: 100%;
@@ -162,7 +164,7 @@
   color: var(--brand-yellow);
 }
 .logoSync {
-  color: var(--navy);
+  color: var(--text);
 }
 .logoDash {
   width: 72px;
@@ -232,7 +234,7 @@
   border: 1.5px solid var(--border);
   border-radius: var(--radius-md);
   font-size: 14px;
-  background: #f4f7fb;
+  background: var(--bg);
   color: var(--text);
   transition:
     border-color var(--t-fast),
@@ -244,7 +246,7 @@
 }
 .input:focus {
   border-color: var(--orange);
-  background: #fff;
+  background: var(--card);
   box-shadow: 0 0 0 3px var(--orange-ghost);
 }
 .input:disabled {

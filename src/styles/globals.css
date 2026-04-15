@@ -25,6 +25,8 @@
   --bg-subtle:     #E8EBF0;
   --card:          #FFFFFF;
   --card-hover:    #FAFBFC;
+  --toast-bg:      #FFFFFF;
+  --notif-unread-bg: #FFFAF7;
 
   /* Text */
   --text:          #111827;
@@ -73,11 +75,46 @@
   --font-body:    'Barlow', sans-serif;
 }
 
+[data-theme='dark'] {
+  /* Surface */
+  --bg:            #111827;
+  --bg-subtle:     #1F2937;
+  --card:          #1F2937;
+  --card-hover:    #374151;
+  --toast-bg:      #1F2937;
+  --notif-unread-bg: rgba(0, 58, 112, 0.12);
+
+  /* Text */
+  --text:          #F9FAFB;
+  --text-mid:      #E5E7EB;
+  --text-muted:    #9CA3AF;
+  --text-light:    #6B7280;
+
+  /* Border */
+  --border:        #374151;
+  --border-mid:    #4B5563;
+
+  /* Keep other static Brand/Status colors same, layout intact */
+}
+
 /* ─── Reset ─────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Immersive theme transition class */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: 
+    background-color 450ms ease,
+    color 450ms ease,
+    border-color 450ms ease,
+    box-shadow 450ms ease,
+    opacity 450ms ease !important;
 }
 
 html {
